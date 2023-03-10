@@ -144,7 +144,7 @@
             drawNextFrame(); // (but should we?)
             //XXX: Send a XHTML Request that updates the entity you just  modified!
             let url = '/entity/' + entity
-            sendJSONXMLHTTPRequest(url, data, function (callback) { }) // url, data, callback()
+            sendJSONXMLHTTPRequest(url, data, callback) // url, data, callback
         }
 
         var counter = 0;
