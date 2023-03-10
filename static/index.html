@@ -253,11 +253,11 @@
         // Add the application specific mouse listeners!
         //XXX: TODO Make these prettier!
         mouse.mousedowners.push(function (x, y, clicked, e) {
-            addEntityWithoutName({ 'x': x, 'y': y, 'colour': 'blue' });
+            addEntityWithoutName({ 'x': x, 'y': y, 'colour': 'blue', 'radius': 10 });
         });
 
         mouse.mouseuppers.push(function (x, y, clicked, e) {
-            addEntityWithoutName({ 'x': x, 'y': y, 'colour': 'red' });
+            addEntityWithoutName({ 'x': x, 'y': y, 'colour': 'red', 'radius': 10 });
         });
 
         mouse.mousedraggers.push(function (x, y, clicked, e) {
@@ -270,8 +270,46 @@
 
         function update() {
             //XXX: TODO Get the world from the webservice using a XMLHTTPRequest
+
+
+            // function sendJSONXMLHTTPRequest(url, objects, callback) {
+            //     var xhr = new XMLHttpRequest();
+            //     xhr.onreadystatechange = function () {
+            //         if (xhr.readyState == 4) {
+            //             try {
+            //                 if (xhr.status == 200) {
+            //                     //XXX: parse some JSON from the request!
+            //                     //XXX: Pass the data to the callback!
+            //                     json_response = JSON.parse(xhr.responseText)
+            //                     callback(json_response)
+            //                 }
+            //             }
+            //             catch (e) {
+            //                 alert('Error: ' + e.name);
+            //             }
+            //         }
+            //     };
+
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    try {
+                        if (xhr.status == 200) {
+                            world = JSON.parse(xhr.responseText)
+                            drawNextFrame();
+                        }
+                    }
+                    catch (e) {
+                        alert('Error: ' + e.name);
+                    }
+                }
+            };
+            xhr.open('GET', '/world')
+            xhr.setRequestHeader('Accept', 'application/json')
+            xhr.send();
             drawFrame();
         }
+
 
         // 30 frames per second
         setInterval(update, 1000 / 30.0);
