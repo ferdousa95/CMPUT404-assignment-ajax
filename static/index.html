@@ -144,7 +144,7 @@
             drawNextFrame(); // (but should we?)
             //XXX: Send a XHTML Request that updates the entity you just  modified!
             let url = '/entity/' + entity
-            sendJSONXMLHTTPRequest(url, data, callback) // url, data, callback
+            sendJSONXMLHTTPRequest(url, data, function (callback) { }) // url, data, callback
         }
 
         var counter = 0;
@@ -263,7 +263,7 @@
         mouse.mousedraggers.push(function (x, y, clicked, e) {
             addEntityWithoutName({
                 'x': x, 'y': y, 'colour': 'green',
-                'radius': 10
+                'radius': 20
             });
         });
 
