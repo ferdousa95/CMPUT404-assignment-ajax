@@ -9,6 +9,8 @@ Make a shared state AJAX drawing program
 
 Contributors / Licensing
 ========================
+Name: Ferdous Adit
+student id: 1538839
 
 Generally everything is LICENSE'D under the Apache 2 license by Abram Hindle.
 
@@ -20,4 +22,3 @@ Send POST data using XMLHttpRequest
 2.
 https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/open
 
-3.
